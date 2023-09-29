@@ -1,0 +1,13 @@
+name: pradyunSummerEnv1
+dependencies:
+  - openai
+  - transformers
+  - streamlit
+  - tabulate
+  - pip:
+    - langchain
+    - chromadb
+    - python-environ
+    - tiktoken
+    - huggingface_hub
+    - sentence_transformers

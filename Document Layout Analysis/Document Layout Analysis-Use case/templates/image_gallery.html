@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Layout Preview</title>
+    <link rel="icon" href="https://i.postimg.cc/SsQ2XWQm/Whats-App-Image-2023-06-02-at-13-42-45.jpg">
+    <style>
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* padding: 10px; */
+            /* background-color: #f0f0f0; */
+        }
+
+        /* Style for the logo image */
+        .logo {
+            width: 250px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .center-heading {
+            text-align: center;
+            background-color: #0047AB;
+            /* padding: 20px 0; */
+        }
+        .center-heading h1{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #fff;
+        }
+        .file-name {
+            text-align: center;
+            
+            /* padding: 20px 0; */
+        }
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .image-gallery h2{
+            color:  #0047AB;
+        }
+        .image-gallery img {
+            max-width: 100%;
+            max-height: 100%;
+            border: 1px solid #ccc;
+        }
+        .image-item {
+            width: 50%; /* Set the width as a percentage of the screen width */
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        
+        .image-item img {
+            max-width: 100%;
+            max-height: 100%;
+            border: 1px solid #ccc;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Replace "logo.png" with the actual path to your logo image -->
+        <a href="http://127.0.0.1:5000/">
+            <img src="https://i.postimg.cc/NMwxbRZ3/Whats-App-Image-2023-06-02-at-13-42-45.jpg" alt="Logo" class="logo">
+        </a>
+    </header>
+    <div class="center-heading">
+        <h1>Layout Preview</h1>
+    </div>
+    
+    <!-- <div class="image-details">
+        <h2>File Name: {{ entry.filename }}</h2>
+        <h3>Page Numbers: 
+            {% for page_info in entry.layout_result %}
+                {{ page_info.page_number }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </h3>
+    </div>
+    <div class="image-gallery">
+        {{ image_gallery_html | safe }}
+    </div> -->
+    <div class="file-name">
+        <h2>File Name: {{ entry.filename }}</h2>
+    </div>
+    
+    <div class="image-gallery">
+        
+        {% for page_info in entry.layout_result %}
+            <div class="image-item">
+                <p>Page {{ page_info.page_number }}</p>
+                <img src="data:image/png;base64,{{ page_info.preview }}" alt="Page {{ page_info.page_number }}">
+                
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

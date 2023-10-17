@@ -1,0 +1,9 @@
+FROM python
+
+ADD Hello.py .
+
+ADD /pages/ .
+
+RUN pip install openai transformers streamlit tabulate langchain chromadb python-environ tiktoken huggingface_hub sentence_transformers
+
+CMD [“python”, “./Hello.py”] 
